@@ -14,4 +14,9 @@ router.put('/:lockerId', authenticate, lockerController.updateLocker);
 
 // Route to delete a locker by its ID
 router.delete('/:lockerId', authenticate, lockerController.deleteLocker);
+
+
+
+router.post('/:lockerId/release', authenticate, lockerController.releaseLocker);
+
 module.exports = router;

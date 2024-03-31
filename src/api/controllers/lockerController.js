@@ -66,3 +66,22 @@ exports.deleteLocker = async (req, res) => {
     res.status(500).json({ message: 'Failed to delete locker', error });
   }
 };
+// controllers/lockerController.js
+// Add this function to your existing locker controller
+
+exports.releaseLocker = async (req, res) => {
+  const { lockerId } = req.params;
+
+  try {
+    // Find the locker and update its status to 'available' and clear the tagUid
+    const locker = await Locker.findOneAndUpdate({ lockerId }, { status: 'available', tagUid: null }, { new: true });
+
+    if (!locker) {
+      return res.status(404).json({ message: 'Locker not found' });
+    }
+
+    res.json({ message: 'Locker released successfully', locker });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to release locker', error });
+  }
+};

@@ -1,5 +1,5 @@
 
-@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzExNzE2NDI3LCJleHAiOjE3MTE3MjAwMjd9.zCe8fXI2wY_06f9OjHARX5GtXMjE_kpBpuJPYc7UIgI
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzExODk3MDc3LCJleHAiOjE3MTE5MDA2Nzd9.UeyteeinFEh1x7fT5tSjCtVIuRatICZEY_R7e2INOZ8
 content-type: application/json
 
 {
@@ -93,4 +93,41 @@ Authorization: Bearer {{token}}
     "name": "LORA-01",
     "serialNumber": "LoRa-03",
     "location":"Cheung Chau"
+}
+
+
+###
+POST http://localhost:3000/api/lockers/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "lockerId": "Locker-01"
+}
+
+###
+GET http://localhost:3000/api/lockers/Locker-01/availability HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "lockerId": "Locker-01"
+}
+###
+POST http://localhost:3000/api/lockers/Locker-01/access HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "tagUid": "123-123-01"
+}
+
+
+###
+POST http://localhost:3000/api/lockers/Locker-01/release HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "tagUid": "123-123-01"
 }
