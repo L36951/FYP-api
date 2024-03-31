@@ -1,0 +1,96 @@
+
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzExNzE2NDI3LCJleHAiOjE3MTE3MjAwMjd9.zCe8fXI2wY_06f9OjHARX5GtXMjE_kpBpuJPYc7UIgI
+content-type: application/json
+
+{
+    "name": "Kenny",
+    "email": "laisk2001@gmail.com",
+    "password":"123456",
+    "role":"admin"
+}
+###
+POST  http://localhost:3000/api/staff/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "laisk2001@gmail.com",
+    "password":"123456"
+}
+###
+
+
+PATCH http://localhost:3000/api/staff/update/66058fe4596fa2f453f8f2bc HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    
+    "email": "laisk2001@gmail.com",
+    "password":"123456"
+}
+
+###
+DELETE http://localhost:3000/api/staff/delete/66058fe4596fa2f453f8f2bc HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    
+    "email": "laisk2001@gmail.com",
+    "password":"123456"
+}
+
+###
+GET http://localhost:3000/api/devices/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Kenny",
+    "email": "laisk2001@gmail.com",
+    "password":"123456",
+    "role":"admin"
+}
+
+###
+GET http://localhost:3000/api/devices/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Kenny",
+    "email": "laisk2001@gmail.com",
+    "password":"123456",
+    "role":"admin"
+}
+
+###
+POST http://localhost:3000/api/devices/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "LORA-01",
+    "serialNumber": "LoRa-02",
+    "location":"Cheung Chau"
+}
+###
+PUT http://localhost:3000/api/devices/6606b8e95660c7aea121871a HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "LORA-01",
+    "serialNumber": "LoRa-03",
+    "location":"Cheung Chau"
+}
+###
+DELETE http://localhost:3000/api/devices/6606b8e95660c7aea121871a HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "LORA-01",
+    "serialNumber": "LoRa-03",
+    "location":"Cheung Chau"
+}

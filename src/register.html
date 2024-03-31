@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Staff Account</title>
+</head>
+<body>
+    <h2>Register Staff Account</h2>
+    <form id="registerForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="role">Role:</label><br>
+        <select id="role" name="role">
+            <option value="System Administrator">System Administrator</option>
+            <option value="User">User</option>
+        </select><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script src="register.js"></script>
+</body>
+</html>
