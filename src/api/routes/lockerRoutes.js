@@ -18,5 +18,6 @@ router.delete('/:lockerId', authenticate, lockerController.deleteLocker);
 
 
 router.post('/:lockerId/release', authenticate, lockerController.releaseLocker);
-
+// In routes/lockerRoutes.js or equivalent
+router.post('/match', lockerController.matchTagWithLocker);
 module.exports = router;

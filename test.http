@@ -1,5 +1,5 @@
 
-@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzExODk3MDc3LCJleHAiOjE3MTE5MDA2Nzd9.UeyteeinFEh1x7fT5tSjCtVIuRatICZEY_R7e2INOZ8
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzExOTY2MDkxLCJleHAiOjE3MTE5Njk2OTF9.K2o4KqdkEK4eT29Z3NBIsKTXTtXJUZwRkUaKn02rDD0
 content-type: application/json
 
 {
@@ -9,7 +9,7 @@ content-type: application/json
     "role":"admin"
 }
 ###
-POST  http://localhost:3000/api/staff/login HTTP/1.1
+POST  http://44.202.236.163:3000/api/staff/login HTTP/1.1
 content-type: application/json
 
 {
@@ -106,7 +106,7 @@ Authorization: Bearer {{token}}
 }
 
 ###
-GET http://localhost:3000/api/lockers/Locker-01/availability HTTP/1.1
+GET http://44.202.236.163:3000/api/lockers/Locker-01/availability HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{token}}
 

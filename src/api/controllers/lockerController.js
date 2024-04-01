@@ -85,3 +85,26 @@ exports.releaseLocker = async (req, res) => {
     res.status(500).json({ message: 'Failed to release locker', error });
   }
 };
+
+
+// In controllers/lockerController.js
+exports.matchTagWithLocker = async (req, res) => {
+  const { lockerId, tagUid } = req.body; // Extract lockerId and tagUid from request body
+
+  try {
+    const locker = await Locker.findOne({ lockerId: lockerId }); // Look up the locker by ID
+    if (!locker) {
+      return res.status(404).json({ message: 'Locker not found' });
+    }
+
+    // Check if the provided tagUid matches the one stored with the locker
+    const isMatch = locker.tagUid === tagUid;
+    if (isMatch) {
+      res.json({ message: 'Tag matches the locker', match: true });
+    } else {
+      res.json({ message: 'Tag does not match the locker', match: false });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
