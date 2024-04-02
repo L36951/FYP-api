@@ -1,6 +1,5 @@
 
-@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzExOTY2MDkxLCJleHAiOjE3MTE5Njk2OTF9.K2o4KqdkEK4eT29Z3NBIsKTXTtXJUZwRkUaKn02rDD0
-content-type: application/json
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzEyMDQ3NzE1LCJleHAiOjE3MTIwNTEzMTV9.gPXjJtwV0rQFPvUPCaSGjogtThVHjCWBKLR0yjiW548
 
 {
     "name": "Kenny",
@@ -9,7 +8,7 @@ content-type: application/json
     "role":"admin"
 }
 ###
-POST  http://44.202.236.163:3000/api/staff/login HTTP/1.1
+POST  http://localhost:3000/api/staff/login HTTP/1.1
 content-type: application/json
 
 {
@@ -130,4 +129,16 @@ Authorization: Bearer {{token}}
 
 {
     "tagUid": "123-123-01"
+}
+
+###
+POST  http://localhost:3000/api/devicesData/data HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "deviceId":"device-01", 
+    "position": 
+    {"beacon1":-22, "beacon2":-35, "beacon3": -45, "beacon4":-35}, 
+    "heartrate":65
 }

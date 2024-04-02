@@ -9,4 +9,5 @@ router.get('/:id', authenticate, deviceController.getDeviceById); // Get a singl
 router.put('/:id', authenticate, deviceController.updateDevice); // Update a device
 router.delete('/:id', authenticate, deviceController.deleteDevice); // Delete a device
 
+
 module.exports = router;

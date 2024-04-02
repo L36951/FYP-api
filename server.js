@@ -7,6 +7,8 @@ const deviceRoutes = require('./src/api/routes/deviceRoutes');
 const heartRateRoutes = require('./src/api/routes/heartRateRoutes');
 const positionRoutes = require('./src/api/routes/positionRoutes');
 const lockerRoutes = require('./src/api/routes/lockerRoutes');
+const deviceDataRoutes = require('./src/api/routes/deviceDataRoutes'); // Adjust the path as necessary
+
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
@@ -41,3 +43,4 @@ app.use('/api/devices', deviceRoutes); // Mount the device routes
 app.use('/api/heartRates', heartRateRoutes); // Mount the heart rate routes
 app.use('/api/positions', positionRoutes); // Mount the position routes
 app.use('/api/lockers', lockerRoutes);
+app.use('/api/devicesData', deviceDataRoutes);
