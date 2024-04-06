@@ -1,5 +1,5 @@
 
-@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzEyMDQ3NzE1LCJleHAiOjE3MTIwNTEzMTV9.gPXjJtwV0rQFPvUPCaSGjogtThVHjCWBKLR0yjiW548
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzEyMjM5MjI1LCJleHAiOjE3MTIyNDI4MjV9.r-CgEsxktZuGHxiaj1bOd-5fX3A_CXeIVucdlsIS1zE
 
 {
     "name": "Kenny",
@@ -69,19 +69,19 @@ content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "name": "LORA-01",
+    "name": "device-01",
     "serialNumber": "LoRa-02",
     "location":"Cheung Chau"
 }
 ###
-PUT http://localhost:3000/api/devices/6606b8e95660c7aea121871a HTTP/1.1
+PUT http://localhost:3000/api/devices/660e9e5d021d0683abb82aeb HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "name": "LORA-01",
-    "serialNumber": "LoRa-03",
-    "location":"Cheung Chau"
+    "status": "active",
+    "dateTimeOfActivation":"2024-04-03T08:48:50.073+00:00"
+    
 }
 ###
 DELETE http://localhost:3000/api/devices/6606b8e95660c7aea121871a HTTP/1.1
@@ -133,6 +133,18 @@ Authorization: Bearer {{token}}
 
 ###
 POST  http://localhost:3000/api/devicesData/data HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "deviceId":"device-01", 
+    "position": 
+    {"beacon1":-22, "beacon2":-35, "beacon3": -45, "beacon4":-35}, 
+    "heartrate":65
+}
+
+###
+GET  http://localhost:3000/api/devicesData/active HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{token}}
 

@@ -59,3 +59,4 @@ exports.deleteDevice = async (req, res) => {
     res.status(500).json({ message: 'Failed to delete device', error });
   }
 };
+

@@ -4,6 +4,8 @@ const deviceSchema = new mongoose.Schema({
   name: { type: String, required: true },
   serialNumber: { type: String, required: true, unique: true },
   location: { type: String, required: false },
+  status: { type: String, enum: ['active', 'inactive'], default: 'inactive' },
+  dateTimeOfActivation: { type: Date }
   // Add more fields as necessary
 });
 

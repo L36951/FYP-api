@@ -10,4 +10,5 @@ router.put('/:id', authenticate, deviceController.updateDevice); // Update a dev
 router.delete('/:id', authenticate, deviceController.deleteDevice); // Delete a device
 
 
+
 module.exports = router;

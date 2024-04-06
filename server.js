@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const staffRoutes = require('./src/api/routes/staffRoutes');
@@ -11,6 +11,7 @@ const deviceDataRoutes = require('./src/api/routes/deviceDataRoutes'); // Adjust
 
 require('dotenv').config();
 const app = express();
+app.use(cors());  // This will enable CORS for all routes and methods
 const port = process.env.PORT || 3000;
 
 // MongoDB URI and Database Name
