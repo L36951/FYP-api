@@ -84,14 +84,28 @@ exports.releaseLocker = async (req, res) => {
   const { lockerId } = req.params;
 
   try {
-    // Find the locker and update its status to 'available' and clear the tagUid
-    const locker = await Locker.findOneAndUpdate({ lockerId }, { status: 'available', tagUid: null }, { new: true });
+     // 首先查询储物柜获取当前的 tagUid
+     const locker = await Locker.findOne({ lockerId });
 
-    if (!locker) {
-      return res.status(404).json({ message: 'Locker not found' });
-    }
-
-    res.json({ message: 'Locker released successfully', locker });
+     if (!locker) {
+       return res.status(404).json({ message: 'Locker not found' });
+     }
+ 
+     // 使用获取到的 tagUid 查找并更新设备状态为 'inactive'
+     const device = await Device.findOneAndUpdate(
+       { tagUid: locker.tagUid }, // 使用查询到的 tagUid
+       { status: 'inactive' },
+       { new: true }
+     );
+ 
+     // 然后更新储物柜状态为 'available' 并重置 tagUid
+     const updatedLocker = await Locker.findOneAndUpdate(
+       { lockerId },
+       { status: 'available', tagUid: null },
+       { new: true }
+     );
+ 
+     res.json({ message: 'Locker released successfully', locker: updatedLocker, device });
   } catch (error) {
     res.status(500).json({ message: 'Failed to release locker', error });
   }
