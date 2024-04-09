@@ -5,7 +5,8 @@ const deviceSchema = new mongoose.Schema({
   serialNumber: { type: String, required: true, unique: true },
   location: { type: String, required: false },
   status: { type: String, enum: ['active', 'inactive'], default: 'inactive' },
-  dateTimeOfActivation: { type: Date }
+  dateTimeOfActivation: { type: Date },
+  tagUid: { type: String, default: null } // Stores the NFC tag UID
   // Add more fields as necessary
 });
 

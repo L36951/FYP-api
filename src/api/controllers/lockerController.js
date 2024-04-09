@@ -1,6 +1,6 @@
 // controllers/lockerController.js
 const Locker = require('../models/lockerModel');
-
+const Device = require('../models/deviceModel'); 
 exports.checkAvailability = async (req, res) => {
   const { lockerId } = req.params;
   try {
@@ -18,6 +18,17 @@ exports.requestAccess = async (req, res) => {
   const { tagUid } = req.body; // Expecting the NFC tag UID in the request body.
 
   try {
+    
+
+    const device = await Device.findOneAndUpdate(
+      { 'status': 'inactive', 'tagUid': tagUid }, 
+      { 'status': 'active', 'dateTimeOfActivation': new Date() },
+      { new: true }
+    );
+
+    if (!device) return res.status(400).json({ message: 'Device not found or already active' });
+
+
     const locker = await Locker.findOneAndUpdate({ lockerId, status: 'available' }, { status: 'occupied', tagUid }, { new: true });
     if (!locker) return res.status(400).json({ message: 'Locker not available or not found' });
 
