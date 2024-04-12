@@ -1,7 +1,8 @@
 // controllers/deviceDataController.js
 const DeviceData = require('../models/DeviceDataModel');
 const Device = require('../models/deviceModel');
-
+const Alert = require('../models/AlertModel');
+/*
 exports.createDeviceData = async (req, res) => {
   try {
     const newDeviceData = new DeviceData(req.body);
@@ -11,7 +12,34 @@ exports.createDeviceData = async (req, res) => {
     res.status(400).json({ message: 'Error saving data', error });
   }
 };
+*/
+exports.createDeviceData = async (req, res) => {
+  try {
+    const newDeviceData = new DeviceData(req.body);
+    await newDeviceData.save();
 
+    // Define normal heart rate range
+    const normalHeartRateLowerBound = 60;
+    const normalHeartRateUpperBound = 100;
+
+    // Check if heart rate is outside the normal range
+    if (newDeviceData.heartrate < normalHeartRateLowerBound || newDeviceData.heartrate > normalHeartRateUpperBound) {
+      // Create an alert message record
+      const alertMessage = `Heart rate out of normal range: ${newDeviceData.heartrate} BPM`;
+      const newAlert = new Alert({
+        message: alertMessage,
+        deviceId: newDeviceData.deviceId,
+        timestamp: new Date() // Assuming your Alert model has a timestamp field
+      });
+
+      await newAlert.save();
+    }
+
+    res.status(201).json({ message: 'Data saved successfully', data: newDeviceData });
+  } catch (error) {
+    res.status(400).json({ message: 'Error saving data', error });
+  }
+};
 exports.fetchActiveDeviceData = async (req, res) => {
   try {
     const activeDevices = await Device.find({ status: 'active' });

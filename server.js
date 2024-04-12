@@ -8,6 +8,7 @@ const heartRateRoutes = require('./src/api/routes/heartRateRoutes');
 const positionRoutes = require('./src/api/routes/positionRoutes');
 const lockerRoutes = require('./src/api/routes/lockerRoutes');
 const deviceDataRoutes = require('./src/api/routes/deviceDataRoutes'); // Adjust the path as necessary
+const alertRoutes = require('./src/api/routes/alertRoutes'); // Adjust the path as necessary
 
 require('dotenv').config();
 const app = express();
@@ -45,3 +46,4 @@ app.use('/api/heartRates', heartRateRoutes); // Mount the heart rate routes
 app.use('/api/positions', positionRoutes); // Mount the position routes
 app.use('/api/lockers', lockerRoutes);
 app.use('/api/devicesData', deviceDataRoutes);
+app.use('/api/alerts', alertRoutes);

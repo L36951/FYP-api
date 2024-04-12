@@ -1,5 +1,5 @@
 
-@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzEyMjM5MjI1LCJleHAiOjE3MTIyNDI4MjV9.r-CgEsxktZuGHxiaj1bOd-5fX3A_CXeIVucdlsIS1zE
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzEyODY0MTMzLCJleHAiOjE3MTI4Njc3MzN9.-6DHy72shOeNb3FatjntnVvzjDBIwZyDdoThpMteE-4
 
 {
     "name": "Kenny",
@@ -105,7 +105,7 @@ Authorization: Bearer {{token}}
 }
 
 ###
-GET http://44.202.236.163:3000/api/lockers/Locker-01/availability HTTP/1.1
+GET http://localhost:3000/api/lockers/Locker-0/availability HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{token}}
 
@@ -118,17 +118,27 @@ content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "tagUid": "123-123-01"
+    "tagUid": "1304fa12"
 }
-
-
 ###
-POST http://localhost:3000/api/lockers/Locker-01/release HTTP/1.1
+POST http://localhost:3000/api/lockers/match HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "tagUid": "123-123-01"
+    "tagUid": "1304fa12",
+    "lockerId": "Locker-01"
+}
+
+
+###
+POST http://localhost:3000/api/lockers/Locker-0/release HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "tagUid": "1304fa12",
+    "lockerId": "Locker-01"
 }
 
 ###
@@ -139,12 +149,22 @@ Authorization: Bearer {{token}}
 {
     "deviceId":"device-01", 
     "position": 
-    {"beacon1":-22, "beacon2":-35, "beacon3": -45, "beacon4":-35}, 
-    "heartrate":65
+    {"beacon1":-22, "beacon2":-35, "beacon3": -45, "beacon4":-35}
 }
 
 ###
-GET  http://localhost:3000/api/devicesData/active HTTP/1.1
+GET  http://44.202.236.163:3000/api/devicesData/active HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhaXNrMjAwMUBnbWFpbC5jb20iLCJzdGFmZklkIjoiNjYwNmI4NDY1NjYwYzdhZWExMjE4NzBjIiwiaWF0IjoxNzEyODY0MTMzLCJleHAiOjE3MTI4Njc3MzN9.-6DHy72shOeNb3FatjntnVvzjDBIwZyDdoThpMteE-4
+
+{
+    "deviceId":"device-01", 
+    "position": 
+    {"beacon1":-22, "beacon2":-35, "beacon3": -45, "beacon4":-35}, 
+    "heartrate":10
+}
+###
+GET  http://localhost:3000/api/alerts/alerts HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{token}}
 
@@ -152,5 +172,5 @@ Authorization: Bearer {{token}}
     "deviceId":"device-01", 
     "position": 
     {"beacon1":-22, "beacon2":-35, "beacon3": -45, "beacon4":-35}, 
-    "heartrate":65
+    "heartrate":10
 }
