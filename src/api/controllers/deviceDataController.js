@@ -15,12 +15,13 @@ exports.createDeviceData = async (req, res) => {
 */
 exports.createDeviceData = async (req, res) => {
   try {
+    console.log(req.body);
     const newDeviceData = new DeviceData(req.body);
     await newDeviceData.save();
 
     // Define normal heart rate range
-    const normalHeartRateLowerBound = 60;
-    const normalHeartRateUpperBound = 100;
+    const normalHeartRateLowerBound = 40;
+    const normalHeartRateUpperBound = 200;
 
     // Check if heart rate is outside the normal range
     if (newDeviceData.heartrate < normalHeartRateLowerBound || newDeviceData.heartrate > normalHeartRateUpperBound) {

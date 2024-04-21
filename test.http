@@ -8,7 +8,7 @@
     "role":"admin"
 }
 ###
-POST  http://localhost:3000/api/staff/login HTTP/1.1
+POST  http://3.144.232.16:3000/api/staff/login HTTP/1.1
 content-type: application/json
 
 {
